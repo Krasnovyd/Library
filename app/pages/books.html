@@ -1,0 +1,27 @@
+<title-header></title-header>
+<div ng-controller="BookController as bookCtrl">
+	<form class="navbar-form">
+		Search:
+		<input ng-model="search" class="form-control" placeholder="Search">
+		<button class="btn btn-primary pull-right" ng-click="bookCtrl.open()"><i class="fa fa-plus"></i> Add new</button>
+		Count: <span class="badge">{{(bookCtrl.books | filter:bookCtrl.filter | filter:search).length}}</span>
+		<span ng-show="bookCtrl.filter">
+			<button class="btn btn-xs" ng-click="bookCtrl.filter = ''">Reset authors</button>
+			<span>Author: {{bookCtrl.filter}}</span>
+		</span>
+	</form>
+
+	<div class="well well-sm" ng-repeat="book in bookCtrl.books | filter:bookCtrl.filter | filter:search track by $index">
+		<p class="pull-right">Rating: {{book.rating}}</p>
+		<h2>Name: <a ng-click="bookCtrl.open(book)">{{book.name}}</a></h2>
+		<h3>Author: <a ng-click="bookCtrl.filter = book.author" ng-model="book.author">{{book.author}}</a></h3>
+		<dl>
+			<dt>Description:</dt>
+			<dd>{{book.description}}</dd>
+		</dl>
+		<section>
+			<button class="btn btn-primary" ng-click="bookCtrl.open(book)"><i class="fa fa-pencil"></i> Edit</button>
+			<button class="btn btn-default" ng-click="bookCtrl.remove(book, $index)"><i class="fa fa-remove"></i> Remove</button>
+		</section>
+	</div>
+</div>

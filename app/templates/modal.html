@@ -1,0 +1,43 @@
+<div class="modal-header">
+	<h3>Book</h3>
+</div>
+<div class="modal-body">
+	<form name="reviewForm" class="form-horizontal" ng-submit="reviewForm.$valid && save()" novalidate>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Name:</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="book.name" class="form-control" placeholder="Name" ng-minlength="5" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Author:</label>
+			<div class="col-sm-9">
+				<input type="text" ng-model="book.author" class="form-control" placeholder="Author" ng-minlength="5" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Rating:</label>
+			<div class="col-sm-9">
+				<select ng-model="book.rating" required>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Description:</label>
+			<div class="col-sm-9">
+				<textarea class="form-control" ng-model="book.description" required></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-12">
+				<button class="btn pull-right" ng-click="cancel()">Cancel</button>
+				<input class="btn btn-primary pull-right" type="submit" value="Submit"/>
+			</div>
+		</div>
+	</form>
+</div>

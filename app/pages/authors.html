@@ -1,0 +1,10 @@
+<title-header></title-header>
+<div ng-controller="AuthorsController as authorCtrl">
+	<div class="well well-sm" ng-repeat="book in authorCtrl.books | unique: 'author' track by $index">
+		<h2>Author: <a ng-href="#/books" ng-click="authorCtrl.gotoBooks(book.author)">{{book.author}}</a></h2>
+		<p>Books: {{(authorCtrl.books | filter:book.author).length}}</p>
+		<ul ng-repeat="bookName in authorCtrl.books | filter:book.author">
+			<li>{{bookName.name}}</li>
+		</ul>
+	</div>
+</div>
